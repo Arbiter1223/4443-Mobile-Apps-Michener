@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, ApplicationInitStatus } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,7 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    BrowserModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     Geolocation,
+    ApplicationInitStatus,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
