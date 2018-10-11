@@ -1,1 +1,1 @@
-## Cory Michener and Brent Workman
+## Partnered with Brent Workman

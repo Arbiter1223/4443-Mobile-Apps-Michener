@@ -1,6 +1,0 @@
-{
-  "id": 100,
-  "first": "your first name",
-  "last":"your last name",
-  "email":"your@email.com"
-}
