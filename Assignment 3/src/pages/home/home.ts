@@ -76,9 +76,6 @@ export class HomePage {
  
   this.addInfoWindow(marker, content);
 
-  // Save user information to FireBase
-  this.writeUserData(idNum, 'Cory', 'Michener', 'Arbiter1223@live.com');
-
   // Get date
   var currentDate = (new Date()).toISOString();
 
