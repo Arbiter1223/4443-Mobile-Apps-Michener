@@ -20,6 +20,7 @@ export class AuthService
 
     signInWithEmail(credentials)
     {
+        // Sign in through Firebase with entered credentials
         console.log('Sign in with email');
         return this.afAuth.auth.signInWithEmailAndPassword(
             credentials.email,
@@ -78,7 +79,7 @@ export class AuthService
 
     // BUG
     // Function to implement Google sign in
-    
+
     /*
 
     signInWithGoogle()
