@@ -21,7 +21,7 @@ declare var google;
     
   // Disable deprecated features
   db.settings({
-  timestampsInSnapshots: true
+    timestampsInSnapshots: true
   }); 
 
   var idNum = 1223;
@@ -31,67 +31,71 @@ declare var google;
   selector: 'home-page',
   templateUrl: 'home.html'
 })
-export class HomePage {
- 
+export class HomePage
+{
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
- 
+  constructor(public navCtrl: NavController, public geolocation: Geolocation)
+  {
+
   }
  
-  ionViewDidLoad(){
+  ionViewDidLoad()
+  {
     this.loadMap();
   }
  
-  loadMap(){
- 
+  loadMap()
+  {
     this.geolocation.getCurrentPosition().then((position) => {
- 
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
- 
       let mapOptions = {
         center: latLng,
         zoom: 15,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       }
- 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
- 
     }, (err) => {
       console.log(err);
     });
- 
   }
   
-  addMarker(){
- 
-  let marker = new google.maps.Marker({
-    map: this.map,
-    animation: google.maps.Animation.DROP,
-    position: this.map.getCenter()
-  });
- 
-  let content = "<h4>Information!</h4>";          
- 
-  this.addInfoWindow(marker, content);
+  addMarker()
+  {
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: this.map.getCenter()
+    });
+    let content = "<h4>Information!</h4>";
+    this.addInfoWindow(marker, content);
 
-  // Get date
-  var currentDate = (new Date()).toISOString();
+    // Get date
+    var currentDate = (new Date()).toISOString();
 
-  // Get location
-  this.geolocation.getCurrentPosition().then((pos) => {
-    point = [pos.coords.latitude, pos.coords.longitude];
 
-    // Save location information to Firebase
-    this.writeLocationData(idNum, point, currentDate)
-   }).catch((error) => {
-     console.log('Error getting location', error);
-   });
+
+    /*
+
+    // Get location
+    this.geolocation.getCurrentPosition().then((pos) => {
+      point = [pos.coords.latitude, pos.coords.longitude];
+
+      // Save location information to Firebase
+      this.writeLocationData(idNum, point, currentDate)
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+
+    */
+
+    console.log("Button function nominal.");
+
   }
 
-  addInfoWindow(marker, content){
- 
+  addInfoWindow(marker, content)
+  {
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });
@@ -99,25 +103,8 @@ export class HomePage {
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
- 
   }
  
-  // Function to write user information to Firebase
-  writeUserData(id, first, last, email) {
-    db.collection("users").add({
-      id: id,
-      first: first,
-      last: last,
-      email: email
-    })
-    .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-      console.error("Error adding document: ", error);
-    });
-  }
-
   // Function to write location information to Firebase
   writeLocationData(id, point, time)
   {
@@ -126,11 +113,15 @@ export class HomePage {
       point: point,
       time: time
     })
-    .then(function(docRef) {
+    .then(function(docRef)
+    {
       console.log("Document written with ID: ", docRef.id);
     })
-    .catch(function(error) {
+    .catch(function(error)
+    {
       console.error("Error adding document: ", error);
     });
   }
+
+
 }
