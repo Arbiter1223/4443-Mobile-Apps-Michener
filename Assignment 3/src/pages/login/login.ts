@@ -28,13 +28,16 @@ export class LoginPage
     });
   }
 
+  // Checks the user's credentials, and logs in if they are valid
   login()
   {
     let data = this.loginForm.value;
 
+    // Return if credentials are invalid
     if (!data.email)
       return;
 
+    // Otherwise, proceed with signing in with the entered credentials
     let credentials = 
     {
       email: data.email,
@@ -47,11 +50,15 @@ export class LoginPage
     );
   }
 
+  // If user clicks signup, go to signup page
   signup()
   {
     this.navCtrl.push(SignupPage);
   }
 
+  // BUG
+  // If user wishes to sign in with Google, attempt to sign in with Google credentials
+  
   /*
 
   loginWithGoogle()
@@ -61,7 +68,7 @@ export class LoginPage
         error => console.log(error.message)
       );
   }
-  
+
   */
 
   ionViewDidLoad()

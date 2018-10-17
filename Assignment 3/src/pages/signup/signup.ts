@@ -27,6 +27,7 @@ export class SignupPage
     });
   }
 
+  // Initialize form for user to enter new credentials
   signup()
   {
     let data = this.form.value;
@@ -35,6 +36,8 @@ export class SignupPage
       email: data.email,
       password: data.password
     };
+
+    // Send credentials to Firebase
     this.auth.signup(credentials).then(
       () => this.navCtrl.setRoot(HomePage),
       error => this.signupError = error.message

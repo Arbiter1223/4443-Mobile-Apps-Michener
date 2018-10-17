@@ -29,8 +29,9 @@ export class AuthService
 
     signup(credentials)
     {
-        var random = (Math.floor(Math.random() * 10) + Math.floor(Math.random() * 100));
-        // Add user to "users" collection in Firebase
+        // Give the user a random id number
+        var random = (Math.floor(Math.random() * 10) + Math.floor(Math.random() * 100) + Math.floor(Math.random() * 1000));
+        // Add user "Luke Skywalker" to "users" collection in Firebase
         this.writeUserData(random, "Luke", "Skywalker", credentials.email);
         // Register user in Firebase
         return this.afAuth.auth.createUserWithEmailAndPassword(
@@ -50,10 +51,12 @@ export class AuthService
         })
         .then(function(docRef)
         {
+            // If successful, output success message to console
             console.log("Document written with ID: ", docRef.id);
         })
         .catch(function(error)
         {
+            // If unsuccessful, output error message to console
             console.error("Error adding document: ", error);
         });
     }
@@ -73,6 +76,9 @@ export class AuthService
         return this.afAuth.auth.signOut();
     }
 
+    // BUG
+    // Function to implement Google sign in
+    
     /*
 
     signInWithGoogle()
